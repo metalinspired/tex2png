@@ -1,4 +1,3 @@
-demo/cache
+.idea
 composer.lock
 vendor
-**.swp

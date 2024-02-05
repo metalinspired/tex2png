@@ -1,3 +1,5 @@
+This is a fork of [Gregwar/Tex2png](https://github.com/Gregwar/Tex2png) updated to PHP 8.1
+
 Tex2png
 =======
 
@@ -23,55 +25,34 @@ To use this library you'll need :
 You'll also need a temporary folder and, of courses, enough permissions to write to the 
 target directory
 
+Installation
+------------
+
+```shell
+composer require metalinspired/tex2png
+```
+
 Usage
 -----
-
-Just include the `Tex2png.php` file or register this repository directory as the
-`Gregwar\Tex2png\` namespace and do the following :
 
 ```php
 <?php
 
 // This will create a formula and save it to sum.png
-Tex2png::create('\sum_{i = 0}^{i = n} \frac{i}{2}')
+(new Tex2png('\sum_{i = 0}^{i = n} \frac{i}{2}'))
     ->saveTo('sum.png')
     ->generate();
 ```
 
-You can have a look at the example in `example/` directory.
-
-Using the cache
----------------
-
-Tex2png library includes a caching system allowing you to generate images only one time.
-To do so, just don't tell `Tex2png` what is the target file :
-
-```php
-<?php
-
-Tex2png::create('\sum_{i = 0}^{i = n} \frac{i}{2}')
-    ->generate();
-
-// The filename will be choosen using an hash of the formula and
-// the image density. (file name will look like cache/tex/3/0/2/e/6/8febefe7aaed9eeb8abf09070d10e02e93e.png)
-```
-
-If the file already exists, it will not generate anything, else, it will generate it. This results in a 
-tiny but powerful caching system avoiding to regenerate a formula PNG twice.
-
-Note that you can change the cache directory calling the `setCacheDirectory()` function
-
-This is based on the [Gregwar/Cache](https://github.com/Gregwar/Cache/) library.
-
 Changing the density
 --------------------
 
-The second constructor/create() parameter is the image density :
+The second constructor parameter is the image density :
 
 ```php
 <?php
 
-Tex2png::create('\sum_{i = 0}^{i = n} \frac{i}{2}', 300)
+(new Tex2png('\sum_{i = 0}^{i = n} \frac{i}{2}', 300))
     ->generate();
 ```
 
@@ -83,4 +64,4 @@ of the formula with a density of 1000 :
 License
 -------
 
-This class is under MIT license, for more information, please refer to the `LICENSE` file
+This class is under MIT license, for more information, please refer to the [LICENSE](LICENSE) file
