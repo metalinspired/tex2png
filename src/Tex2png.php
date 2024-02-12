@@ -1,6 +1,6 @@
 <?php
 
-namespace Tex2png;
+namespace metalinspired\Tex2png;
 
 use RuntimeException;
 
